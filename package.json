@@ -1,0 +1,24 @@
+{
+  "name": "proiecttw",
+  "version": "1.0.0",
+  "description": "Magazin de dulciuri online",
+  "keywords": [
+    "dulciuri",
+    "jeleuri",
+    "acadele",
+    "ciocolata",
+    "Candy",
+    "Kingdom"
+  ],
+  "license": "ISC",
+  "author": "Dumitru Andrei Dragos",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^5.0.1",
+    "express": "^5.2.1"
+  }
+}
