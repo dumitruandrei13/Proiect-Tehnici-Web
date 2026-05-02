@@ -1,0 +1,119 @@
+@media print {
+    /* 0. Resetari de baza */
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+        color: black !important;
+        width: 100%;
+        font-family: serif;
+        font-size: 12pt;
+    }
+
+
+    #banner-print {
+        display: block !important;
+        position: absolute;
+        top: 0;
+        left: 10%;
+        width: 80% !important;
+        border: 1px dotted black !important;
+        text-align: center;
+        padding: 10px;
+        font-weight: bold;
+        box-sizing: border-box;
+    }
+
+    .watermark {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        bottom: 1cm;
+        right: 1cm;
+        width: 100px !important;
+        height: 2cm !important;
+        border: 4px double black !important;
+        opacity: 0.65 !important;
+        z-index: 1000;
+        pointer-events: none;
+        font-size: 10pt;
+        text-align: center;
+        background: white !important;
+    }
+
+    #grid-pagina, main, section, article {
+        display: block !important;
+        width: 100% !important;
+        float: none !important;
+        margin: 0 !important;
+        padding: 10px !important;
+        border: none !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+    }
+
+   
+    img, video, iframe, audio, object, embed, figure, figcaption,
+    #link-top, .burger, #hamburger, #ch-menu, nav, .meniu, 
+    #container-triunghi, .taburi-iframe, .container-iframe, 
+    meter, progress, button, input, .buton-video {
+        display: none !important;
+    }
+
+    
+    a {
+        color: black !important;
+        text-decoration: none !important;
+        background: transparent !important;
+    }
+
+   
+    header#header {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; 
+        position: relative;
+        page-break-after: always;
+        border: none !important;
+    }
+
+    #header h1 {
+        font-size: 2.5em !important; 
+        text-align: center;
+        text-decoration: underline !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    #header h1 i { display: none !important; }
+
+    
+    footer, #footer {
+        page-break-before: always;
+        display: block !important;
+        padding-top: 20px !important;
+    }
+
+    
+    @page {
+        size: A4;
+        margin: 1cm;
+    }
+    @page :left {
+        margin-left: 2.5cm;
+        margin-right: 0.5cm;
+    }
+    @page :right {
+        margin-right: 2.5cm;
+        margin-left: 0.5cm;
+    }
+
+    h1, h2, h3, h4, h5, h6, p, span, li, td, th {
+        color: black !important;
+        text-shadow: none !important;
+    }
+}

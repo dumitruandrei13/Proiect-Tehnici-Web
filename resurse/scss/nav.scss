@@ -1,101 +1,160 @@
-$nul:0;
+// Variabile SASS
+$inaltime-meniu: 50px;
+$latime-buton: 160px;
+$tranzitie-standard: 0.4s ease-in-out;
+$nr-elemente-meniu: 6;
 
-
-
-nav{
-    --latime-buton: 140px;
-    --inaltime-buton: 40px;
-    background-color: var(--culoare-portocaliu);
-    border-bottom: 3px solid var(--culoare-baza);
+body {
+    --culoare-meniu: #F75539; 
+    --culoare-meniu-hover: #F73949;
+    --culoare-text-meniu: white;
+    --culoare-sageata: #FFEB3B;
+    --umbra-interna: inset 0 0 20px rgba(0,0,0,0.6);
 }
 
-ul.meniu, ul.meniu  ul{
+%item-meniu-base {
     list-style-type: none;
-    padding: $nul;
-    margin: 0;
-}
-
-%nu_afisez{
-    display:none;
-}
-
-#hamburger, #ch-menu{
-    @extend %nu_afisez;
-}
-
-.text-icon, .imag-icon{
-    display: inline-block;
-}
-
-ul.meniu{
-    display: flex;
     position: relative;
-    justify-content: center;
+    background-color: var(--culoare-meniu);
+    transition: all $tranzitie-standard;
 }
 
-
-
-ul.meniu  {ul{
+// Stiluri care trebuie sa fie ascunse pe ecran (ele apar doar la print)
+#banner-print, .watermark {
     display: none;
-    animation: animatie_submeniu 0.4s linear;
-    transform-origin: center top;
-}}
-
-ul.meniu li:hover ul{
-    display: block;
-    position: absolute;
-    z-index: 100;
 }
 
+// Ascundem checkbox-ul si burger-ul pe desktop
+#ch-menu, #hamburger {
+    display: none;
+}
 
-@keyframes animatie_submeniu {
-    0% {
-        opacity: 0;
-        transform: scale(0,0);
+ul.meniu {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    height: $inaltime-meniu;
+    background-color: var(--culoare-meniu);
+
+    li {
+        @extend %item-meniu-base;
+        width: $latime-buton;
+        text-align: center;
+
+        a {
+            display: block;
+            line-height: $inaltime-meniu;
+            color: var(--culoare-text-meniu);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color $tranzitie-standard, background-color $tranzitie-standard;
+            i { margin-right: 5px; }
+        }
+
+        &:hover {
+            box-shadow: var(--umbra-interna);
+            background-color: var(--culoare-meniu-hover);
+            & > a { color: var(--culoare-sageata); }
+            & > ul { transform: scaleY(1); }
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform $tranzitie-standard;
+
+            li {
+                @extend %item-meniu-base;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                a {
+                    position: relative;
+                    padding-left: 0;
+                    transition: padding $tranzitie-standard;
+                    &::before {
+                        content: "\2192";
+                        position: absolute;
+                        left: -20px;
+                        opacity: 0;
+                        color: var(--culoare-sageata);
+                        transition: all $tranzitie-standard;
+                    }
+                }
+                &:hover a {
+                    padding-left: 15px;
+                    &::before { left: 10px; opacity: 1; }
+                }
+            }
+        }
+    }
+}
+
+/* ECRAN MEDIU */
+@media screen and (max-width: 1000px) and (min-width: 701px) {
+    ul.meniu {
+        li {
+            width: 60px; 
+            a {
+                font-size: 0; 
+                i { font-size: 1.2rem; margin: 0; }
+            }
+            ul {
+                width: 180px;
+                li {
+                    width: 100%;
+                    a { font-size: 0.9rem; padding-left: 10px; }
+                }
+            }
+        }
+    }
+}
+
+/* ECRAN MIC (BURGER MENU) */
+@media screen and (max-width: 700px) {
+    #hamburger {
+        display: block;
+        height: $inaltime-meniu;
+        line-height: $inaltime-meniu;
+        background-color: var(--culoare-meniu);
+        color: white;
+        padding-left: 20px;
+        cursor: pointer;
+        font-size: 1.5rem;
     }
 
-    50% {
-        opacity: 0.8;
-        transform: scale(1,0.5);}
-    100% {
-        opacity: 1;
-        transform: scale(1,1);
+    ul.meniu {
+        display: none;
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform $tranzitie-standard;
 
+        li {
+            width: 100%;
+            text-align: left;
+            &:first-child a {
+                font-size: 0;
+                i { font-size: 1.5rem; padding-left: 20px; }
+            }
+            a { padding-left: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            ul {
+                position: static;
+                transform: scaleY(1);
+                li {
+                    background-color: rgba(0,0,0,0.1);
+                    a { padding-left: 40px; &::before { display: none; } }
+                    &:hover { box-shadow: var(--umbra-interna); }
+                }
+            }
+        }
     }
-}
-
-
-ul.meniu li{
-    cursor: pointer;
-    font-weight: bold;
-    width:var(--latime-buton);
-    height:var(--inaltime-buton);
-    background-color: var(--culoare-portocaliu-deschis);
-    border: 1px solid var(--culoare-portocaliu);
-    color: white;
-    text-align: center;
-    line-height: var(--inaltime-buton);
-    transition: all 0.3s ease-in-out;
-}
-
-ul.meniu li a{
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    height:100%;
-}
-
-ul.meniu li:hover{
-    background-color: var(--culoare-roz-aprins);
-    color: white;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
-}
-
-ul.meniu ul li {
-    background-color: var(--culoare-baza);
-    border-top: 1px solid white;
-}
-
-ul.meniu ul li:hover {
-    background-color: var(--culoare-rosu-zmeura);
+    #ch-menu:checked ~ ul.meniu { display: flex; transform: scaleY(1); }
 }

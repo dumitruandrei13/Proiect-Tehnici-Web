@@ -43,7 +43,13 @@ app.get("/despre",function(req,res){
 res.render("pagini/despre")
 });
 
+app.get("/", function(req, res) {
+    res.render("pagini/index");
+});
 
+app.get("/index", function(req, res) {
+    res.render("pagini/index");
+});
 
 app.listen(8080);
 console.log("Serverul a pornit!");
