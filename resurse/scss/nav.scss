@@ -5,10 +5,10 @@ $tranzitie-standard: 0.4s ease-in-out;
 $nr-elemente-meniu: 6;
 
 body {
-    --culoare-meniu: #F75539; 
-    --culoare-meniu-hover: #F73949;
+    --culoare-meniu: var(--culoare-baza); 
+    --culoare-meniu-hover: var(--culoare-rosu-zmeura);
     --culoare-text-meniu: white;
-    --culoare-sageata: #FFEB3B;
+    --culoare-sageata: var(--culoare-portocaliu-deschis);
     --umbra-interna: inset 0 0 20px rgba(0,0,0,0.6);
 }
 

@@ -1,0 +1,31 @@
+a:visited {
+    color: var(--culoare-portocaliu);
+}
+
+a[href^="http"]::before {
+    content: "⮳";
+    font-size: 1.5em;
+    vertical-align: middle;
+    margin-right: 0.2em;
+    transition: color 0.3s ease;
+}
+
+a[href^="http"]:hover::before {
+    color: var(--culoare-piersica);
+}
+
+main a {
+    background-image: radial-gradient(circle, var(--culoare-piersica) 0%, var(--culoare-piersica) 40%, transparent 80%, transparent 100%);
+    background-position: center;
+    background-size: 0% 0%;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s ease;
+}
+
+main a:hover {
+    background-size: 100% 100%;
+}
+
+a:active {
+    border: 2px solid var(--culoare-baza);
+}

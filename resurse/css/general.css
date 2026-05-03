@@ -8,6 +8,7 @@ body{
     --culoare-roz-aprins: #F739BB;         /* Magenta / Roz aprins */
     --culoare-portocaliu-deschis: #F79839; /* Galben-Portocaliu */
     --culoare-piersica: #FAB3A6;           /* Piersica */
+    --culoare-link-vizitat: #8B4513;        /* Maro (SaddleBrown) - pentru linkuri vizitate */
     
     /* Culoare pentru butonul de top */
     --culoare-contur: #F79839;
@@ -271,7 +272,7 @@ figure.fg-img > img{
 
 #link-top:hover #triunghi-fiu {
     transform: translateY(-8px);
-    border-bottom-color: #e91e63; 
+    border-bottom-color: var(--culoare-rosu-zmeura); 
 }
 
 /* Tooltip butonul go to top*/
