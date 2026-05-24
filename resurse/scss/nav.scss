@@ -1,30 +1,27 @@
-// Variabile SASS
 $inaltime-meniu: 50px;
 $latime-buton: 160px;
 $tranzitie-standard: 0.4s ease-in-out;
 $nr-elemente-meniu: 6;
 
 body {
-    --culoare-meniu: var(--culoare-baza); 
-    --culoare-meniu-hover: var(--culoare-rosu-zmeura);
-    --culoare-text-meniu: white;
-    --culoare-sageata: var(--culoare-portocaliu-deschis);
-    --umbra-interna: inset 0 0 20px rgba(0,0,0,0.6);
+  $culoare-meniu: var(--culoare-baza);
+  $culoare-meniu-hover: var(--culoare-rosu-zmeura);
+  --culoare-text-meniu: white;
+  $culoare-sageata: var(--culoare-portocaliu-deschis);
+  $umbra-interna: inset 0 0 20px rgba(0,0,0,0.6);
 }
 
 %item-meniu-base {
     list-style-type: none;
     position: relative;
-    background-color: var(--culoare-meniu);
+    background-color: $culoare-meniu;
     transition: all $tranzitie-standard;
 }
 
-// Stiluri care trebuie sa fie ascunse pe ecran (ele apar doar la print)
 #banner-print, .watermark {
     display: none;
 }
 
-// Ascundem checkbox-ul si burger-ul pe desktop
 #ch-menu, #hamburger {
     display: none;
 }
@@ -34,7 +31,7 @@ ul.meniu {
     padding: 0;
     margin: 0;
     height: $inaltime-meniu;
-    background-color: var(--culoare-meniu);
+    background-color: $culoare-meniu;
 
     li {
         @extend %item-meniu-base;
@@ -52,9 +49,9 @@ ul.meniu {
         }
 
         &:hover {
-            box-shadow: var(--umbra-interna);
-            background-color: var(--culoare-meniu-hover);
-            & > a { color: var(--culoare-sageata); }
+            box-shadow: $umbra-interna;
+            background-color: $culoare-meniu-hover;
+            & > a { color: $culoare-sageata; }
             & > ul { transform: scaleY(1); }
         }
 
@@ -82,7 +79,7 @@ ul.meniu {
                         position: absolute;
                         left: -20px;
                         opacity: 0;
-                        color: var(--culoare-sageata);
+                        color: $culoare-sageata;
                         transition: all $tranzitie-standard;
                     }
                 }
@@ -115,7 +112,6 @@ ul.meniu {
     }
 }
 
-/* ECRAN MIC (BURGER MENU) */
 @media screen and (max-width: 700px) {
     #hamburger {
         display: block;
@@ -151,7 +147,7 @@ ul.meniu {
                 li {
                     background-color: rgba(0,0,0,0.1);
                     a { padding-left: 40px; &::before { display: none; } }
-                    &:hover { box-shadow: var(--umbra-interna); }
+                    &:hover { box-shadow: $umbra-interna; }
                 }
             }
         }

@@ -1,18 +1,19 @@
 @media print {
-    /* Resetări pentru a evita pagini albe inutile */
+  
     html, body {
         margin: 0 !important;
         padding: 0 !important;
         background: white !important;
     }
 
-    /* 1. Banner centrat, 80% lățime, border negru punctat */
+
     #banner-print {
         display: block !important;
         position: absolute;
         top: 0;
         left: 50%;
         transform: translateX(-50%);
+        
         width: 80% !important;
         border: 1px dotted black !important;
         text-align: center;
@@ -21,15 +22,16 @@
         z-index: 1000;
     }
 
-    /* 2. Ascundere elemente media și elemente dependente, plus link top */
+    
     img, video, iframe, embed, object, 
     figure, figcaption, .imag-produs, 
     #link-top, .burger, #ch-menu, #hamburger,
-    .galerie-a, #sectiune-galerie-animata {
+    .galerie-a, #sectiune-galerie-animata,
+    .container-iframe, .taburi-iframe {
         display: none !important;
     }
 
-    /* 3. Gridul paginii ca block */
+    
     #grid-pagina, main {
         display: block !important;
         width: 100% !important;
@@ -39,19 +41,19 @@
         box-shadow: none !important;
     }
 
-    /* 4. Linkurile ca text normal (nu colorate, nu subliniate) */
+   
     a {
         color: black !important;
         text-decoration: none !important;
     }
 
-    /* 5. Heading nivel 1 pe prima pagină, centrat vertical și orizontal */
+    
     header#header {
         display: flex !important;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 95vh; /* Folosim 95vh pentru a evita overflow-ul care generează pagini albe */
+        height: 95vh; 
         width: 100%;
         page-break-after: always;
         background: white !important;
@@ -59,7 +61,7 @@
     }
 
     header#header h1 {
-        font-size: 2.5rem !important; /* 2.5 * root font size */
+        font-size: 2.5rem !important; 
         text-decoration: underline !important;
         text-align: center;
         margin: 0;
@@ -70,14 +72,13 @@
         display: none !important;
     }
 
-    /* 6. Page break înainte de footer */
+    
     footer, #footer {
         page-break-before: always;
         display: block !important;
         width: 100% !important;
     }
 
-    /* 7. Watermark pe fiecare pagină */
     .watermark {
         display: flex !important;
         position: fixed;
@@ -95,10 +96,10 @@
         pointer-events: none;
     }
 
-    /* 8. Margini pagini stânga/dreapta */
+    
     @page {
         size: A4;
-        margin: 0; /* Marginile sunt controlate prin :left și :right */
+        margin: 0;
     }
 
     @page :left {
